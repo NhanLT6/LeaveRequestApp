@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LeaveRequest.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:LeaveRequest.ViewModels;assembly=LeaveRequest"
+    xmlns:behavior="clr-namespace:LeaveRequest.Behaviors;assembly=LeaveRequest"
+    Visual="Material"
+    mc:Ignorable="d">
+
+
+    <StackLayout Margin="30">
+        <!--  Binding  -->
+        <StackLayout.BindingContext>
+            <viewModels:LoginViewModel />
+        </StackLayout.BindingContext>
+
+        <Label
+            Text="WELCOME &#10;BACK"
+            TextColor="#333"
+            FontAttributes="Bold"
+            FontSize="40"
+            VerticalOptions="CenterAndExpand" />
+
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <!--  UserName  -->
+            <Entry
+                x:Name="UserId"
+                Placeholder="User Name"
+                Text="{Binding UserId, Mode=TwoWay}">
+
+                <Entry.Behaviors>
+                    <behavior:PasswordValidationBehavior />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Text="UserId required" />
+
+            <!--  Password  -->
+            <Entry
+                x:Name="Password"
+                IsPassword="True"
+                Placeholder="Password"
+                Text="{Binding Password}">
+
+                <Entry.Behaviors>
+                    <behavior:PasswordValidationBehavior />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Text="Password required" />
+        </StackLayout>
+
+        <StackLayout VerticalOptions="EndAndExpand">
+            <!--  Login button  -->
+            <Button
+                x:Name="Login"
+                BackgroundColor="#333"
+                Command="{Binding LoginCommand}"
+                CornerRadius="10"
+                Font="Roboto"
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Login"
+                TextColor="White" />
+
+            <!--  Forgot password  -->
+            <Button
+                x:Name="ForgotPassword"
+                BackgroundColor="Transparent"
+                Text="Forgot password?"
+                TextColor="#333333"
+                Visual="Default" />
+            <BoxView HeightRequest="50" />
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
